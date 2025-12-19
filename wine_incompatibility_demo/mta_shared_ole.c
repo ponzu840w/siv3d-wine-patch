@@ -30,6 +30,9 @@ Demonstrate the difference in behavior between Windows 11 and wine-stable 10.0 (
 This difference in behavior explains why older Siv3D Windows apps fail to launch under Wine.
 */
 
+// Uncomment this if targetting older than Windows 7 or ReactOS
+// #define OLDER_THAN_WIN7_OR_REACTOS
+
 #include <windows.h>
 #include <ole2.h>
 #include <stdio.h>
@@ -179,6 +182,7 @@ int main()
 
 void ShowApartmentState(const char* tName)
 {
+#ifndef OLDER_THAN_WIN7_OR_REACTOS
   APTTYPE aptType;
   APTTYPEQUALIFIER aptQual;
   HRESULT hr = CoGetApartmentType(&aptType, &aptQual);
@@ -195,6 +199,7 @@ void ShowApartmentState(const char* tName)
     printf("State: UNINITIALIZED / UNKNOWN (hr=0x%08X)", (unsigned int)hr);
   }
   printf(" >=====\n");
+#endif
 }
 
 void LogInfo(const char* tName, const char* msg)

@@ -73,6 +73,8 @@ wine mta_shared_ole.exe
 [Thread A] FINISHED
 ```
 
+※  ReactOS 0.4.15 exhibits the same behavior as Wine. To run it, you need to uncomment the define statement.
+
 ### Windows11 25H2
 ```
 ~~~ Step 1. OleInitialize makes Thread A STA ~~~
